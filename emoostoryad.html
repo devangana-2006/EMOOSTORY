@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMOOSTORY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 3em;
+        }
+        input, button, textarea {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        h2 {
+            color: #ff69b4;
+        }
+        textarea {
+            width: 60%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        .output {
+            margin-top: 30px;
+            font-size: 1.2em;
+            white-space: pre-wrap;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="start">  
+        <h1>EMOOSTORY</h1>
+        <p>Enter your name to begin:</p>
+        <input type="text" id="username" placeholder="Your name">
+        <br>
+        <button onclick="startStory()">Enter Your Story</button>
+    </div>
+
+    <div class="hidden" id="welcome">
+        <h2 id="welcomeMsg"></h2>
+        <p>Write your story below:</p>
+        <textarea id="story" placeholder="Type your story here..."></textarea><br>
+        <button onclick="convertStory()">Submit Story</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function startStory() {
+            let name = document.getElementById('username').value.trim();
+            if(name) {
+                localStorage.setItem('username', name);
+                document.getElementById('start').classList.add("hidden");
+                document.getElementById('welcome').classList.remove("hidden");
+                document.getElementById('welcomeMsg').innerText = `Welcome, ${name}!`;
+            } else {
+                alert("Please enter your name first!");
+            }
+        }
+
+        const emojiMap = {
+            "cat": "🐱", "dog": "🐶", "sun": "☀️", "moon": "🌙", "star": "⭐", "heart": "❤️",
+            "tree": "🌳", "car": "🚗", "book": "📖", "phone": "📱", "flower": "🌸", "house": "🏠",
+            "fish": "🐟", "bird": "🐦", "ball": "⚽", "teacher":"👨‍🏫", "student":"👨‍🎓",
+            "monkey":"🐒", "duck":"🦆", "lion":"🦁", "elephant":"🐘", "panda":"🐼", "tiger": "🐯",
+            "horse": "🐴", "cow": "🐮", "pig": "🐷", "rabbit": "🐇", "bear": "🐻", "sheep": "🐑",
+            "goat": "🐐", "chicken": "🐔", "frog": "🐸", "penguin": "🐧", "koala": "🐨", "camel": "🐪",
+            "giraffe": "🦒", "zebra": "🦓", "snake": "🐍", "turtle": "🐢", "kangaroo": "🦘",
+            "octopus": "🐙", "dolphin": "🐬", "whale": "🐋", "shark": "🦈", "crab": "🦀",
+            "butterfly": "🦋", "bee": "🐝", "ladybug": "🐞", "apple": "🍎", "mango": "🥭",
+            "banana": "🍌", "grapes": "🍇", "watermelon": "🍉", "pizza": "🍕", "man":"👨‍🦰",
+            "woman":"👱‍♀️", "school":"🏫", "boy":"🧒", "girl":"👧", "hug":"🫂"
+        };
+
+        function convertStory() {
+            let text = document.getElementById('story').value;
+            let name = localStorage.getItem('username') || "User";
+
+            if (!text.trim()) {
+                alert("Please enter your story!");
+                return;
+            }
+
+            let words = text.split(/\b/);
+            let converted = words.map(word => {
+                let lower = word.toLowerCase();
+                return emojiMap[lower] ? emojiMap[lower] : word;
+            }).join('');
+
+            document.getElementById('output').innerHTML = `
+                <strong>Your Emoji Story:</strong><br>${converted}
+                <br><br>
+                <h3>Thank you, ${name}! 😊</h3>
+                <button onclick="nextStory()">Next Story</button>
+            `;
+        }
+
+        function nextStory() {
+            document.getElementById('story').value = "";
+            document.getElementById('output').innerHTML = "";
+            document.getElementById('welcomeMsg').innerText = `Welcome, ${localStorage.getItem('username')}!`;
+        }
+    </script>
+</body>
+</html>
