@@ -17,12 +17,20 @@ It’s a fun and interactive website that takes any given noun as input and inst
 This helps users visualize words in a playful way, making communication more expressive and engaging. 
 Perfect for chatting, learning, or just having fun with language.
 
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+### The Problem 
+People often read short stories or text messages without much visual engagement.
+Although emojis are fun, manually replacing every noun in a story with its matching emoji is time-consuming and impractical.
+Most readers won’t bother to do it themselves, and storytellers miss a quirky, playful way to present their text
 
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+### The Solution 
 
+Takes a story (text) as input.
+
+Identifies nouns automatically using a simple parts-of-speech (POS) tagging method.
+
+Replaces each noun with a corresponding emoji from a predefined dictionary (e.g., “cat” → 🐱, “sun” → ☀️).
+
+Outputs the modified story — where nouns are swapped for emojis — while keeping the rest of the sentence intact for readability.
 ## Technical Details
 ### Technologies/Components Used
 For Software:
@@ -49,9 +57,6 @@ story page (last page)
 ### Project Demo
 # Video
 "C:\Users\DELL\Videos\Screen Recordings\Screen Recording 2025-08-08 202609.mp4"
-
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
 - DEVANGANA DV -HTML,CSS,JAVASCRIPT
