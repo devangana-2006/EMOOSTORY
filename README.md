@@ -40,9 +40,13 @@ For Hardware:
 -Laptop
 
 Implementation
+
 For Software:
+
 Installation
+
 git clone https://devangana-2006.github.io/EMOOSTORY/
+
 cd emoostory
 
 
