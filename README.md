@@ -34,10 +34,20 @@ Outputs the modified story — where nouns are swapped for emojis — while keep
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- javascript
-- HTML & CSS
-- CURSOR AI
+- HTML,javascript,css
+- CURSOR AI,github page
+For Hardware:
+-Laptop
 
+Implementation
+For Software:
+Installation
+git clone https://devangana-2006.github.io/EMOOSTORY/
+cd emoostory
+
+
+Project Documentation
+For Software:
 
 
 ### Project Documentation
